@@ -1,0 +1,23 @@
+---
+- name: install
+  apt: name=vsftpd
+
+- name: install libpam-pwdfile
+  apt: name=libpam-pwdfile
+
+- name: create directory of the vsftpd
+  command: mkdir {{ vsftpd_dir }} creates={{ vsftpd_dir }}
+
+- name: create file ftp_users.db
+  command: touch {{ vsftpd_dir }}/ftp_users.db creates={{ vsftpd_dir }}/ftp_users.db
+
+- name: copy file for PAM service
+  template: src=vsftpd.j2 dest=/etc/pam.d/vsftpd mode=644
+
+- name: copy script the vsftpd-user
+  template: src=vsftpd-user.j2 dest=/sbin/vsftpd-user mode=755
+
+- name: copy config file of the vsftpd
+  template: src=vsftpd.conf.j2 dest=/etc/vsftpd.conf mode=644
+  notify:
+    - restart vsftpd

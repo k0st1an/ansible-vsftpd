@@ -1,0 +1,4 @@
+
+vsftpd_dir: /etc/vsftpd
+local_root: /srv/ftp
+db_file: /etc/vsftpd/ftp_users.db

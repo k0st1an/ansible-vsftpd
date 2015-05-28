@@ -1,0 +1,2 @@
+[ftp]
+vsftpd.ru   ansible_ssh_user=engineer

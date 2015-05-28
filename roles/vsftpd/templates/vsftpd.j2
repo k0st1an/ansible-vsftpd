@@ -1,0 +1,7 @@
+# PAM
+auth		requisite	pam_listfile.so		item=user sense=deny file=/etc/ftpusers onerr=fail
+auth		requisite	pam_pwdfile.so		pwdfile={{ db_file }}
+auth		requisite	pam_nologin.so
+account		requisite	pam_permit.so
+session		requisite	pam_loginuid.so
+password	required	pam_deny.so
