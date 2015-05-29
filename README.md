@@ -23,19 +23,19 @@ Developing.
 # Usage
 
 ```
-ansible-playbook -i hosts vsftpd.yml --ask-pass --ask-become-pass
+ansible-playbook -i hosts vsftpd.yml
 ```
 
 or below, if you do not want to create a test user:
 
 ```
-ansible-playbook -i hosts vsftpd.yml --ask-pass --ask-become-pass --skip-tags=testuser
+ansible-playbook -i hosts vsftpd.yml --skip-tags=testuser
 ```
 
 Adding new user:
 
 ```
-ansible-playbook -i hosts vsftpd-user.yml --ask-pass --ask-become-pass -t add
+ansible-playbook -i hosts vsftpd-user.yml -t add
 ```
 
 This is playbook used script `vsftpd-users` on the remote machine, see below.
@@ -56,10 +56,10 @@ Usage vsftpd-user:
   list    [<path to db file>]                         # Show users
 
 Predefined variable:
-  User DB: /etc/vsftpd/ftp_users.db
-  Local root: /srv/ftp
+  User DB: /etc/vsftpd
+  Local root: /srv/ftp/    # Where will be create directory of the user
 ```
 
 # Version
 
-  - 0.2
+  - 0.3
