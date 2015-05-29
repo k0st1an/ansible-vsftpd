@@ -1,4 +1,5 @@
-
 vsftpd_dir: /etc/vsftpd
 local_root: /srv/ftp
-db_file: /etc/vsftpd/ftp_users.db
+ftp_users_db: /etc/vsftpd/ftp_users.db
+test_user: k0st1an
+test_user_password: 42

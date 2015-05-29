@@ -5,24 +5,40 @@
 Developing.
 
 
-# Installing vsftpd
+# Tested
+
+  - Debian Jessie
+  - Ansible v1.9.1
+
+
+# Synopsis
+
+  - Install [vsftpd](https://security.appspot.com/vsftpd.html)
+  - Usage virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
+  - Create the test user:
+    - login: k0st1an
+    - password: 42
+
+
+# Usage
 
 ```
 ansible-playbook -i hosts vsftpd.yml --ask-pass --ask-become-pass
 ```
 
-Will be installed:
-  - [vsftpd](https://security.appspot.com/vsftpd.html)
-  - [libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile)
+or below, if you do not want to create a test user:
 
+```
+ansible-playbook -i hosts vsftpd.yml --ask-pass --ask-become-pass --skip-tags=testuser
+```
 
-# Adding new user
+Adding new user:
 
 ```
 ansible-playbook -i hosts vsftpd-user.yml --ask-pass --ask-become-pass -t add
 ```
 
-This is playbook used script `vsftpd-users`, see below.
+This is playbook used script `vsftpd-users` on the remote machine, see below.
 
 
 # Cli command
@@ -43,3 +59,7 @@ Predefined variable:
   User DB: /etc/vsftpd/ftp_users.db
   Local root: /srv/ftp
 ```
+
+# Version
+
+  - 0.2
