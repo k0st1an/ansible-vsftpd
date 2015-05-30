@@ -1,18 +1,18 @@
 ---
 - name: install vsftpd
-  apt: name=vsftpd state=latest cache_valid_time=3600 update_cache=yes
-
-- name: install libpam-pwdfile
-  apt: name=libpam-pwdfile state=latest
+  apt: name={{ item }} state=latest cache_valid_time=3600 update_cache=yes
+  with_items:
+    - vsftpd
+    - libpam-pwdfile
 
 - name: create directory for user configuration
-  command: mkdir /etc/vsftpd.d creates=/etc/vsftpd.d
+  command: mkdir {{ vsftpd_d }} creates={{ vsftpd_d }}
 
 - name: create directory for key local_root from vsftpd.conf
-  command: mkdir /srv/ftp creates=/srv/ftp
+  command: mkdir {{ vsftpd_local_root }} creates={{ vsftpd_local_root }}
 
 - name: set permissions for local_root
-  command: chown root:root /srv/ftp
+  command: chown root:root {{ vsftpd_local_root }}
 
 - name: copy file for PAM service
   template: src=vsftpd.pam.j2 dest=/etc/pam.d/vsftpd mode=644 backup=yes
