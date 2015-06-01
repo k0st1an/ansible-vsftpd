@@ -1,9 +1,5 @@
 ---
 - hosts: ftp
-  become: yes
-  become_user: root
-  become_method: su
-  gather_facts: no
 
   roles:
     - vsftpd

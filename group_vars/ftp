@@ -3,8 +3,10 @@ vsftpd_ftpd_banner: Welcome to FTP
 vsftpd_max_per_ip: 100
 vsftpd_pasv_min_port: 10000
 vsftpd_pasv_max_port: 14000
-bsftpd_xferlog_enable: YES
+vsftpd_xferlog_enable: 'YES'
 vsftpd_local_root: /srv/ftp
+vsftpd_ssl_enable: 'YES'
+vsftpd_tls_only: 'YES'
 
 vsftpd_d: /etc/vsftpd.d
 vsftpd_pwd_file: /etc/vsftpd

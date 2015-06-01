@@ -1,7 +1,7 @@
 ftpd_banner={{ vsftpd_ftpd_banner }}
 listen=YES
 anonymous_enable=NO
-xferlog_enable={{ bsftpd_xferlog_enable }}
+xferlog_enable={{ vsftpd_xferlog_enable }}
 use_localtime=YES
 connect_from_port_20=YES
 hide_ids=YES
@@ -18,3 +18,8 @@ local_root={{ vsftpd_local_root }}/$USER
 max_per_ip={{ vsftpd_max_per_ip }}
 pasv_min_port={{ vsftpd_pasv_min_port }}
 pasv_max_port={{ vsftpd_pasv_max_port }}
+force_local_data_ssl={{ vsftpd_tls_only }}
+force_local_logins_ssl={{ vsftpd_tls_only }}
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable={{ vsftpd_ssl_enable }}
