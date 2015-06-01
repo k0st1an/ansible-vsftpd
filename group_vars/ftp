@@ -10,7 +10,7 @@ vsftpd_tls_only: 'YES'
 vsftpd_user_config_dir: /etc/vsftpd.d
 # end vsftpd settings
 
-vsftpd_pwd_file: /etc/vsftpd
+pwd_file: /etc/vsftpd
 
 test_user_is_enable: no
 test_user: k0st1an
