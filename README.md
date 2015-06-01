@@ -15,10 +15,34 @@ Developing.
 
   - Install [vsftpd](https://security.appspot.com/vsftpd.html)
   - Usage virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
-  - Create the test user:
+  - Create the test user (optional):
     - login: k0st1an
     - password: 42
 
+
+# Vars
+
+See `group_vars/ftp` for standard options:
+
+    # vsftpd settings
+    vsftpd_ftpd_banner: Welcome to FTP
+    vsftpd_max_per_ip: 100
+    vsftpd_pasv_min_port: 10000
+    vsftpd_pasv_max_port: 14000
+    vsftpd_xferlog_enable: 'YES'
+    vsftpd_local_root: /srv/ftp
+    vsftpd_ssl_enable: 'YES'
+    vsftpd_tls_only: 'YES'
+    vsftpd_user_config_dir: /etc/vsftpd.d
+    # end vsftpd settings
+
+    vsftpd_pwd_file: /etc/vsftpd
+
+    test_user_is_enable: no
+    test_user: k0st1an
+    test_user_password: 42
+
+Documentation of the [vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html).
 
 # Usage
 

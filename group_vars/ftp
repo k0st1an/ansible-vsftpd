@@ -1,4 +1,4 @@
-
+# vsftpd settings
 vsftpd_ftpd_banner: Welcome to FTP
 vsftpd_max_per_ip: 100
 vsftpd_pasv_min_port: 10000
@@ -7,9 +7,11 @@ vsftpd_xferlog_enable: 'YES'
 vsftpd_local_root: /srv/ftp
 vsftpd_ssl_enable: 'YES'
 vsftpd_tls_only: 'YES'
+vsftpd_user_config_dir: /etc/vsftpd.d
+# end vsftpd settings
 
-vsftpd_d: /etc/vsftpd.d
 vsftpd_pwd_file: /etc/vsftpd
 
+test_user_is_enable: no
 test_user: k0st1an
 test_user_password: 42

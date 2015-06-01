@@ -6,7 +6,7 @@
     - libpam-pwdfile
 
 - name: create directory for user configuration
-  command: mkdir {{ vsftpd_d }} creates={{ vsftpd_d }}
+  command: mkdir {{ vsftpd_user_config_dir }} creates={{ vsftpd_user_config_dir }}
 
 - name: create directory for key local_root from vsftpd.conf
   command: mkdir {{ vsftpd_local_root }} creates={{ vsftpd_local_root }}
@@ -23,6 +23,7 @@
 - name: add test user of the ftp
   tags: testuser
   command: /sbin/vsftpd-user add {{ test_user }} {{ test_user_password }} creates=/etc/vsftpd
+  when: test_user_is_enable
 
 # will be create backup file if already exist
 - name: copy config file of the vsftpd
