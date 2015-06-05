@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Konstantin Kruglov
+  description:
+  company: your company (optional)
+  issue_tracker_url: https://github.com/k0st1an/ansible-vsftpd/issues
+  license: Apache License version 2.0, January 2004
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: Debian
+    versions:
+    - jessie
+
+  categories:
+  - networking
+  - web
+
+dependencies: []
