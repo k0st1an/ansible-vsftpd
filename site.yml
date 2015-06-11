@@ -1,5 +1,0 @@
----
-- hosts: ftp
-
-  roles:
-    - vsftpd

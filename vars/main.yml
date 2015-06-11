@@ -1,3 +1,5 @@
+---
+# vars file for ansible-vsftpd
 # vsftpd settings
 vsftpd_ftpd_banner: Welcome to FTP
 vsftpd_max_per_ip: 100

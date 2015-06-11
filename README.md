@@ -1,23 +1,28 @@
-# ansible-vsftpd
-## Tested
+ansible-vsftpd
+==============
+
+Tested
+------
 
   - Debian Jessie
   - Ansible v1.9.1
 
 
-## Synopsis
+Synopsis
+--------
 
   - Install [vsftpd](https://security.appspot.com/vsftpd.html)
   - Usage virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
   - Support TLS. Default is enabled only security connections.
-  - Create the test user (optional):
+  - Create the test user (default is disable):
     - login: k0st1an
     - password: 42
 
 
-## Vars
+Role Variables
+--------------
 
-See `group_vars/ftp` for standard options:
+See `vars/main.yml` for standard options:
 
     # vsftpd settings
     vsftpd_ftpd_banner: Welcome to FTP
@@ -39,13 +44,23 @@ See `group_vars/ftp` for standard options:
 
 Documentation of the [vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html).
 
-## Usage
 
-```
-ansible-playbook -i hosts vsftpd.yml
-```
+License
+-------
 
-## Cli command
+MIT
+
+
+Author Information
+------------------
+
+GitHub: https://github.com/k0st1an
+Author: Konstantin Kruglov
+Contats: kruglovk@gmain.com
+
+
+Cli command
+-----------
 
 There is a script `vsftpd-users` installed into `/sbin/`. It can add, delete, update, and display
 a list of users.
