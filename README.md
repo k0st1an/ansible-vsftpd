@@ -55,8 +55,10 @@ Author Information
 ------------------
 
 GitHub: https://github.com/k0st1an
+
 Author: Konstantin Kruglov
-Contats: kruglovk@gmain.com
+
+Contact: kruglovk@gmain.com
 
 
 Cli command
