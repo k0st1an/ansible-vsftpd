@@ -1,22 +1,25 @@
 ansible-vsftpd
 ==============
 
-Tested
-------
-
-  - Debian Jessie
-  - Ansible v1.9.1
+Install FTP server - [vsftpd](https://security.appspot.com/vsftpd.html).
 
 
 Synopsis
 --------
 
-  - Install [vsftpd](https://security.appspot.com/vsftpd.html)
+  - Install vsftpd
   - Usage virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
   - Support TLS. Default is enabled only security connections.
   - Create the test user (default is disable):
     - login: k0st1an
     - password: 42
+
+
+Tested
+------
+
+  - Debian Jessie
+  - Ansible v1.9.1
 
 
 Role Variables
