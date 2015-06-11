@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Konstantin Kruglov
-  description:
+  description: Install FTP server - vsftpd
   issue_tracker_url: https://github.com/k0st1an/ansible-vsftpd/issues
   license: MIT
   min_ansible_version: 1.2
