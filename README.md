@@ -39,6 +39,8 @@ See `vars/main.yml` for standard options:
     vsftpd_ssl_enable: 'YES'
     vsftpd_tls_only: 'YES'
     vsftpd_user_config_dir: /etc/vsftpd.d
+    vsftpd_rsa_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
+    vsftpd_rsa_private_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
     # end vsftpd settings
 
     pwd_file: /etc/vsftpd
@@ -47,7 +49,7 @@ See `vars/main.yml` for standard options:
     test_user: k0st1an
     test_user_password: 42
 
-Documentation of the [vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html).
+[vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html) documentation.
 
 
 License
