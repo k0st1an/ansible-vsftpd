@@ -9,7 +9,7 @@ delete_failed_uploads=YES
 local_enable=YES
 user_config_dir={{ vsftpd_user_config_dir }}
 virtual_use_local_privs=YES
-write_enable=YES
+write_enable={{ vsftpd_write_enable }}
 guest_enable=YES
 chroot_local_user=YES
 allow_writeable_chroot=YES
@@ -18,8 +18,15 @@ local_root={{ vsftpd_local_root }}/$USER
 max_per_ip={{ vsftpd_max_per_ip }}
 pasv_min_port={{ vsftpd_pasv_min_port }}
 pasv_max_port={{ vsftpd_pasv_max_port }}
+pasv_enable={{ vsftpd_pasv_enable }}
+{% if vsftpd_pasv_address is defined %}
+pasv_address={{ vsftpd_pasv_address }}
+{% endif %}
+{% if vsftpd_pasv_addr_resolve is defined %}
+pasv_addr_resolve={{ vsftpd_pasv_addr_resolve }}
+{% endif %}
 force_local_data_ssl={{ vsftpd_tls_only }}
 force_local_logins_ssl={{ vsftpd_tls_only }}
-rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
-rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+rsa_cert_file={{ vsftpd_rsa_cert_file }}
+rsa_private_key_file={{ vsftpd_rsa_private_key_file }}
 ssl_enable={{ vsftpd_ssl_enable }}

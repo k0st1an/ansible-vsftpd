@@ -9,10 +9,10 @@ Install FTP server - [vsftpd](https://security.appspot.com/vsftpd.html).
 Synopsis
 --------
 
-  - Install vsftpd
-  - Usage virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
-  - Support TLS. Default is enabled only security connections.
-  - Create the test user (default is disable):
+  - Installs vsftpd
+  - Allows use of virtual users ([libpam-pwdfile](https://github.com/tiwe-de/libpam-pwdfile))
+  - Support TLS. Default is enabled i.e. only allow secure connections
+  - Creates a test user (disabled by default):
     - login: k0st1an
     - password: 42
 
@@ -39,6 +39,10 @@ See `vars/main.yml` for standard options:
     vsftpd_ssl_enable: 'YES'
     vsftpd_tls_only: 'YES'
     vsftpd_user_config_dir: /etc/vsftpd.d
+    vsftpd_rsa_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
+    vsftpd_rsa_private_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
+    vsftpd_write_enable: 'YES'
+    vsftpd_pasv_enable: 'YES'
     # end vsftpd settings
 
     pwd_file: /etc/vsftpd
@@ -47,7 +51,12 @@ See `vars/main.yml` for standard options:
     test_user: k0st1an
     test_user_password: 42
 
-Documentation of the [vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html).
+Additionally you can optionally set:
+
+    vsftpd_pasv_address: 52.17.204.30
+    vsftpd_pasv_addr_resolve: NO
+
+[vsftpd](https://security.appspot.com/vsftpd/vsftpd_conf.html) documentation.
 
 
 License
