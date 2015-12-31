@@ -1,7 +1,7 @@
 ansible-vsftpd
 ==============
 
-[![galaxy](https://img.shields.io/badge/galaxy-k0st1an.vsftpd-brightgreen.svg)](://galaxy.ansible.com/detail#/role/6384)
+[![galaxy](https://img.shields.io/badge/galaxy-k0st1an.vsftpd-brightgreen.svg)](https://galaxy.ansible.com/detail#/role/6384)
 
 Install FTP server - [vsftpd](https://security.appspot.com/vsftpd.html).
 
