@@ -72,7 +72,7 @@ GitHub: https://github.com/k0st1an
 
 Author: Konstantin Kruglov
 
-Contact: kruglovk@gmain.com
+Contact: kruglovk@gmail.com
 
 
 Cli command
