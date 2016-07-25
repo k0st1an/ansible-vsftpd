@@ -23,8 +23,8 @@
 
 - name: add test user of the ftp
   tags: testuser
-  command: /sbin/vsftpd-user add {{ test_user }} {{ test_user_password }} creates=/etc/vsftpd
-  when: test_user_is_enable
+  command: /sbin/vsftpd-user add {{ vsftpd_test_user }} {{ vsftpd_test_user_password }} creates=/etc/vsftpd
+  when: vsftpd_test_user_is_enable
 
 # will be create backup file if already exist
 - name: copy config file of the vsftpd
