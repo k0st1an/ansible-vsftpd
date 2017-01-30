@@ -52,7 +52,12 @@ See `vars/main.yml` for standard options:
     vsftpd_users: []
     # end vsftpd settings
 
-    pwd_file: /etc/vsftpd
+
+    vsftpd_pwd_file: /etc/vsftpd
+
+    vsftpd_test_user_is_enable: no
+    vsftpd_test_user: k0st1an
+    vsftpd_test_user_password: 42
 ```
 
 Additionally you can optionally set:
