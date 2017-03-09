@@ -14,6 +14,7 @@ vsftpd_rsa_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
 vsftpd_rsa_private_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
 vsftpd_write_enable: 'YES'
 vsftpd_pasv_enable: 'YES'
+vsftpd_users: []
 # end vsftpd settings
 
 vsftpd_pwd_file: /etc/vsftpd

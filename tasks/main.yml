@@ -7,13 +7,18 @@
     - libpam-pwdfile
 
 - name: create directory for user configuration
-  command: mkdir {{ vsftpd_user_config_dir }} creates={{ vsftpd_user_config_dir }}
+  file:
+    path: "{{ vsftpd_user_config_dir }}"
+    owner: root
+    group: root
+    state: directory
 
-- name: create directory for key local_root from vsftpd.conf
-  command: mkdir {{ vsftpd_local_root }} creates={{ vsftpd_local_root }}
-
-- name: set permissions for local_root
-  command: chown root:root {{ vsftpd_local_root }}
+- name: reate directory for key local_root from vsftpd.conf
+  file:
+    path: "{{ vsftpd_local_root }}"
+    owner: root
+    group: root
+    state: directory
 
 - name: copy file for PAM service
   template: src=vsftpd.pam.j2 dest=/etc/pam.d/vsftpd mode=644 backup=yes
@@ -21,10 +26,11 @@
 - name: copy script the vsftpd-user
   template: src=vsftpd-user.j2 dest=/sbin/vsftpd-user mode=755
 
-- name: add test user of the ftp
-  tags: testuser
-  command: /sbin/vsftpd-user add {{ vsftpd_test_user }} {{ vsftpd_test_user_password }} creates=/etc/vsftpd
-  when: vsftpd_test_user_is_enable
+- name: add ftp users
+  command: vsftpd-user add '{{ item.username }}' '{{ item.password }}' /etc/vsftpd
+  args:
+    creates: "{{ vsftpd_local_root }}/{{ item.username }}"
+  with_items: "{{ vsftpd_users | default([], True) }}"
 
 # will be create backup file if already exist
 - name: copy config file of the vsftpd
