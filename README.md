@@ -20,6 +20,9 @@ Synopsis
         password: 42
       - username: johndoe
         password: pa55w0rd
+        bindpath:
+          - "/var/www/vhosts/example.com"
+          - "/var/www/vhosts/example.net"
 ```
 
 Tested
@@ -49,6 +52,7 @@ See `vars/main.yml` for standard options:
     vsftpd_rsa_private_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
     vsftpd_write_enable: 'YES'
     vsftpd_pasv_enable: 'YES'
+    vsftpd_chmod_enable: 'YES'
     vsftpd_users: []
     # end vsftpd settings
 
