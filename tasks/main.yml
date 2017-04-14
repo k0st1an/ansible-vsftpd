@@ -32,6 +32,10 @@
     creates: "{{ vsftpd_local_root }}/{{ item.username }}"
   with_items: "{{ vsftpd_users | default([], True) }}"
 
+- name: update ftp users
+  command: vsftpd-user upgrade '{{ item.username }}' '{{ item.password }}' /etc/vsftpd
+  with_items: "{{ vsftpd_users | default([], True) }}"
+
 - name: make sure sure bind paths exist
   file: 
    owner: ftp
