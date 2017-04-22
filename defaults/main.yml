@@ -18,6 +18,7 @@ vsftpd_chmod_enable: 'YES'
 vsftpd_file_open_mode: '0666'
 vsftpd_local_umask: '0022'
 vsftpd_utf8_filesystem: 'YES'
+vsftpd_force_dot_files: 'YES'
 vsftpd_users: []
 
 # Optionally enable chown on uploaded files. WARNING! 
