@@ -32,6 +32,38 @@
     creates: "{{ vsftpd_local_root }}/{{ item.username }}"
   with_items: "{{ vsftpd_users | default([], True) }}"
 
+- name: update ftp users
+  command: vsftpd-user upgrade '{{ item.username }}' '{{ item.password }}' /etc/vsftpd
+  with_items: "{{ vsftpd_users | default([], True) }}"
+
+- name: make sure sure bind paths exist
+  file: 
+   owner: ftp
+   group: ftp
+   mode: 0755
+   state: directory
+   path: "{{ item.1 | realpath }}"
+  #debug: msg="Path {{ item.1 | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
+  with_subelements:
+    - "{{ vsftpd_users }}"
+    - bindpath
+    - flags:
+      skip_missing: true
+
+- name: bind paths
+  mount: 
+   opts: bind
+   fstype: none
+   state: mounted 
+   name: "{{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
+   src: "{{ item.1 | realpath }}"
+  #debug: msg="Path {{ item.1 | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
+  with_subelements:
+    - "{{ vsftpd_users }}"
+    - bindpath
+    - flags:
+      skip_missing: true
+
 # will be create backup file if already exist
 - name: copy config file of the vsftpd
   template: src=vsftpd.conf.j2 dest=/etc/vsftpd.conf mode=644 backup=yes

@@ -30,3 +30,17 @@ force_local_logins_ssl={{ vsftpd_tls_only }}
 rsa_cert_file={{ vsftpd_rsa_cert_file }}
 rsa_private_key_file={{ vsftpd_rsa_private_key_file }}
 ssl_enable={{ vsftpd_ssl_enable }}
+chmod_enable={{ vsftpd_chmod_enable }}
+file_open_mode={{ vsftpd_file_open_mode }}
+local_umask={{ vsftpd_local_umask }}
+{% if vsftpd_chown_uploads is defined %}
+chown_uploads={{ vsftpd_chown_uploads }}
+{% endif %}
+{% if vsftpd_chown_username is defined %}
+chown_username={{ vsftpd_chown_username }}
+{% endif %}
+utf8_filesystem={{ vsftpd_utf8_filesystem }}
+force_dot_files={{ vsftpd_force_dot_files }}
+
+# required by fail2ban
+dual_log_enable=YES

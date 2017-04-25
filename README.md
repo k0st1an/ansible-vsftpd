@@ -20,6 +20,9 @@ Synopsis
         password: 42
       - username: johndoe
         password: pa55w0rd
+        bindpath:
+          - "/var/www/vhosts/example.com"
+          - "/var/www/vhosts/example.net"
 ```
 
 Tested
@@ -35,7 +38,8 @@ Role Variables
 See `vars/main.yml` for standard options:
 
 ```yaml
-    # vsftpd settings
+    ### vsftpd.conf settings
+    
     vsftpd_ftpd_banner: Welcome to FTP
     vsftpd_max_per_ip: 100
     vsftpd_pasv_min_port: 10000
@@ -49,9 +53,18 @@ See `vars/main.yml` for standard options:
     vsftpd_rsa_private_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
     vsftpd_write_enable: 'YES'
     vsftpd_pasv_enable: 'YES'
+    vsftpd_chmod_enable: 'YES'
+    vsftpd_file_open_mode: '0666'
+    vsftpd_local_umask: '0022'
+    vsftpd_utf8_filesystem: 'YES'
     vsftpd_users: []
-    # end vsftpd settings
-
+    
+    # Optionally enable chown on uploaded files. WARNING! 
+    # continue only if you are aware of the security implications!
+    #vsftpd_chown_uploads: 'YES'
+    #vsftpd_chown_username: 'www-data'
+    
+    ### end vsftpd.conf settings
 
     vsftpd_pwd_file: /etc/vsftpd
 
