@@ -21,8 +21,10 @@ Synopsis
       - username: johndoe
         password: pa55w0rd
         bindpath:
-          - "/var/www/vhosts/example.com"
-          - "/var/www/vhosts/example.net"
+          - path: "/var/www/vhosts/example.com"
+            owner: www-data
+            group: www-data
+          - path: "/var/www/vhosts/example.net"
 ```
 
 Tested

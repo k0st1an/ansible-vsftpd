@@ -13,7 +13,7 @@
     group: root
     state: directory
 
-- name: reate directory for key local_root from vsftpd.conf
+- name: create directory for key local_root from vsftpd.conf
   file:
     path: "{{ vsftpd_local_root }}"
     owner: root
@@ -37,13 +37,13 @@
   with_items: "{{ vsftpd_users | default([], True) }}"
 
 - name: make sure sure bind paths exist
-  file: 
-   owner: ftp
-   group: ftp
+  file:
+   owner: '{{ item.1.owner | default("ftp") }}'
+   group: '{{ item.1.group | default("ftp") }}'
    mode: 0755
    state: directory
-   path: "{{ item.1 | realpath }}"
-  #debug: msg="Path {{ item.1 | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
+   path: "{{ item.1.path | realpath }}"
+  #debug: msg="Path {{ item.1.path | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1.path | realpath | basename }}"
   with_subelements:
     - "{{ vsftpd_users }}"
     - bindpath
@@ -51,13 +51,13 @@
       skip_missing: true
 
 - name: bind paths
-  mount: 
+  mount:
    opts: bind
    fstype: none
-   state: mounted 
-   name: "{{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
-   src: "{{ item.1 | realpath }}"
-  #debug: msg="Path {{ item.1 | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1 | realpath | basename }}"
+   state: mounted
+   name: "{{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1.path | realpath | basename }}"
+   src: "{{ item.1.path | realpath }}"
+  #debug: msg="Path {{ item.1.path | realpath }} to {{ vsftpd_local_root }}/{{ item.0.username }}/{{ item.1.path | realpath | basename }}"
   with_subelements:
     - "{{ vsftpd_users }}"
     - bindpath
