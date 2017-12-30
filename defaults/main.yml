@@ -30,6 +30,9 @@ vsftpd_users: []
 
 vsftpd_pwd_file: /etc/vsftpd
 
+# Whether or not to send logs to syslog instead of $LOG_PATH
+vsftpd_syslog_enable: 'NO'
+
 vsftpd_test_user_is_enable: no
 vsftpd_test_user: k0st1an
 vsftpd_test_user_password: 42
