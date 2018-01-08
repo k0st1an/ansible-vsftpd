@@ -18,6 +18,7 @@ Synopsis
     vsftpd_users:
       - username: k0st1an
         password: 42
+        state: present
       - username: johndoe
         password: pa55w0rd
         bindpath:
@@ -25,6 +26,8 @@ Synopsis
             owner: www-data
             group: www-data
           - path: "/var/www/vhosts/example.net"
+      - username: janedoe
+        state: absent
 ```
 
 Tested
