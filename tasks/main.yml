@@ -23,17 +23,23 @@
 - name: copy file for PAM service
   template: src=vsftpd.pam.j2 dest=/etc/pam.d/vsftpd mode=644 backup=yes
 
-- name: copy script the vsftpd-user
-  template: src=vsftpd-user.j2 dest=/sbin/vsftpd-user mode=755
-
-- name: add ftp users
-  command: vsftpd-user add '{{ item.username }}' '{{ item.password }}' /etc/vsftpd
-  args:
-    creates: "{{ vsftpd_local_root }}/{{ item.username }}"
+- name: "ensure user dirs exist"
+  file:
+    path: "{{ vsftpd_local_root }}/{{ item.username }}"
+    state: "directory"
+    owner: "ftp"
+    group: "ftp"
+    mode: "0755"
   with_items: "{{ vsftpd_users | default([], True) }}"
 
-- name: update ftp users
-  command: vsftpd-user upgrade '{{ item.username }}' '{{ item.password }}' /etc/vsftpd
+- name: "ensure users are up to date"
+  htpasswd:
+    path: "/etc/vsftpd"
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    crypt_scheme: "sha512_crypt"
+    mode: "0600"
+    state: "{{ item.state | default('present') }}"
   with_items: "{{ vsftpd_users | default([], True) }}"
 
 - name: make sure sure bind paths exist
