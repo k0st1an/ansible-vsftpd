@@ -10,7 +10,7 @@
 
 - debug: msg="{{ vsftpd_local_root }}/{{ item.username }}/{{ inner_item | realpath | basename }}" verbosity=3
   with_items: "{{ contents.stdout_lines }}"
-  when: inner_item not in "{{ managed }}"
+  when: inner_item not in managed
   loop_control:
     loop_var: inner_item
 
@@ -21,7 +21,7 @@
     state: unmounted
     name: "{{ vsftpd_local_root }}/{{ item.username }}/{{ inner_item | realpath | basename }}"
   with_items: "{{ contents.stdout_lines }}"
-  when: inner_item not in "{{ managed }}"
+  when: inner_item not in managed
   loop_control:
     loop_var: inner_item
 
@@ -32,6 +32,6 @@
     state: absent
     name: "{{ vsftpd_local_root }}/{{ item.username }}/{{ inner_item | realpath | basename }}"
   with_items: "{{ contents.stdout_lines }}"
-  when: inner_item not in "{{ managed }}"
+  when: inner_item not in managed
   loop_control:
     loop_var: inner_item
