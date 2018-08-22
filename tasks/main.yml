@@ -64,6 +64,9 @@
     - flags:
       skip_missing: true
 
+- include_tasks: unbind.yml
+  with_items: "{{ vsftpd_users }}"
+
 # will be create backup file if already exist
 - name: copy config file of the vsftpd
   template: src=vsftpd.conf.j2 dest=/etc/vsftpd.conf mode=644 backup=yes
